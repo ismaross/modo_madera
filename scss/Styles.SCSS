@@ -35,7 +35,7 @@ body {
     flex-direction: column;
     text-align: center;
     padding: 50px;
-    background-color: lighten($primary-color, 40%);
+    
     
 
     .h2_index {
@@ -105,64 +105,61 @@ body {
 
 
 // diseño galería de imágenes (juguetes - diseño_iluminación)
+.main_galeria {
+  height: auto; /* Ajusta la altura automáticamente al contenido */
 
-.main_galeria{
-  height: 300px;
-
-
-  .h2_fuente{
+  .h2_fuente {
     font-family: "Chilanka", cursive;
     font-style: normal;
-    font-size: 3rem;
+    font-size: 2.5rem; /* Ajuste inicial */
     font-weight: 600;
+    margin-left: 30px;
   }
 
-  .galeria{
+  .galeria {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-    gap: 10px; 
-    height: 200px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Ajuste flexible */
+    gap: 15px; /* Espaciado inicial */
 
-    .foto{
+    .foto {
       overflow: hidden;
-      border-radius: 5px; 
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative; /* Para controlar la posición del texto descriptivo */
 
-        img{
-          width: 100%; 
-          height: auto; 
-          display: block;
-          transition: transform 0.3s ease; 
-        }
+      img {
+        width: 100%;
+        height: auto; /* Mantiene la proporción */
+        display: block;
+        transition: transform 0.3s ease;
+      }
 
-        &:hover{
-          transform: scale(1.05); 
-        }
+      &:hover img {
+        transform: scale(1.05); /* Efecto de zoom */
+      }
 
-        /* Estilo para el texto descriptivo */
-.descripcion {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  opacity: 0; /* Oculto por defecto */
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
-}
+      .descripcion {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        opacity: 0; /* Oculto por defecto */
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        pointer-events: none;
+      }
 
-.foto:hover .descripcion {
-  opacity: 1;
-  transform: translateY(0); /* Aparece al pasar el mouse */
-}
+      &:hover .descripcion {
+        opacity: 1;
+        transform: translateY(0); /* Aparece al pasar el mouse */
+      }
     }
-
-}
+  }
 }
 
 
@@ -243,19 +240,9 @@ margin-top: 60px;
   }
 
 
-// galería
 
-/*.main_galeria{
-  .galeria{
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  
 
-  }
-}*/
- 
-  
+// index
   @media screen and (max-width: 768px) {
     .banner {
       padding: 20px;
@@ -266,6 +253,7 @@ margin-top: 60px;
   
       img {
         width: 90%;
+        height: auto;
       }
     }
   
@@ -286,6 +274,7 @@ margin-top: 60px;
   
       .logo img {
         width: 60px;
+        height: auto;
       }
   
       .texto_logo h1 {
@@ -308,7 +297,8 @@ margin-top: 60px;
       }
   
       img {
-        width: 100%;
+        width: 10%;
+        height: auto;
       }
     }
   
@@ -334,3 +324,67 @@ margin-top: 60px;
   }
   
 
+// Galería
+
+
+@media (max-width: 480px) {
+  .main_galeria {
+    .h2_fuente {
+      font-size: 2rem; 
+      margin-left: 15px;
+    }
+
+    .galeria {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Columnas más pequeñas */
+      gap: 10px;
+    }
+
+    .foto .descripcion {
+      font-size: 12px; 
+      padding: 5px;
+    }
+  }
+}
+
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .main_galeria {
+    .h2_fuente {
+      font-size: 2.2rem;
+      margin-left: 20px;
+    }
+
+    .galeria {
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Ajuste de columnas */
+      gap: 12px;
+    }
+  }
+}
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .main_galeria {
+    .h2_fuente {
+      font-size: 2.5rem;
+    }
+
+    .galeria {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Tres o más columnas */
+      gap: 15px;
+    }
+  }
+}
+
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .main_galeria {
+    .h2_fuente {
+      font-size: 3rem;
+    }
+
+    .galeria {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Espacio más amplio */
+      gap: 20px;
+    }
+  }
+}
